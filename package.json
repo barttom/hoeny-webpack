@@ -2,7 +2,8 @@
   "name": "honey-webpack",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/js/app.jsx",
+  "repository": "https://github.com/barttom/honey-webpack",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/webpack/bin/webpack.js --config ./configs/webpack.build.js",
