@@ -28,11 +28,18 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|mp4)$/,
         loader: 'file-loader',
         query: {
             name: '[name].[ext]',
             useRelativePath: true
+        }
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        query: {
+            name: 'assets/fonts/[name].[ext]'
         }
       },
       {

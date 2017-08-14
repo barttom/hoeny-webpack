@@ -2,6 +2,7 @@ const helpers = require('./helpers');
 const HtmlWebpack = require('html-webpack-plugin');
 const CleanWebpack = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: {
     app:'./src/js/app.jsx',
@@ -26,13 +27,19 @@ module.exports = {
         }
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|mp4)$/,
         loader: 'file-loader',
         query: {
             name: 'assets/img/[name].[ext]'
         }
       },
-
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file-loader',
+        query: {
+            name: 'assets/fonts/[name].[ext]'
+        }
+      },
       {
         test: /\.scss$/,
         loaders: ['style-loader','css-loader?sourceMap=true', 'sass-loader'],
@@ -61,7 +68,12 @@ module.exports = {
     new CleanWebpack(['dev'], {
       verbose: true,
       root: helpers.absolutePath('')
-    })
+    }),
+    new CopyWebpackPlugin([{
+      from: './src/assets',
+      to: './assets'
+
+    }]),
   ],
   devServer:{
     port: 3005,
