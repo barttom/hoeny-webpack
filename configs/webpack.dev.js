@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: {
-    app:'./src/js/app.jsx',
+    app:['whatwg-fetch', './src/js/app.jsx'],
     vendor: [
       'react',
       'react-dom'
@@ -23,11 +23,11 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /(node_modules)/,
         query:{
-          presets: ['es2015', 'react']
+          presets: ['es2015', 'stage-2', 'react']
         }
       },
       {
-        test: /\.(png|jpg|gif|mp4)$/,
+        test: /\.(png|jpg|ico|gif|mp4)$/,
         loader: 'file-loader',
         query: {
             name: 'assets/img/[name].[ext]'
